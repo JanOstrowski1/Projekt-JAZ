@@ -1,0 +1,100 @@
+body {
+    background: linear-gradient(90deg, rgba(72, 14, 148, 1) 0%, rgba(80, 82, 191, 1) 35%, rgba(8, 213, 94, 1) 100%);
+}
+
+#container{
+    width: 1537px;
+    height: 950px;
+    background-color: lightgray;
+    margin: 40px auto auto;
+    border-top-right-radius:25px;
+    border-top-left-radius:25px;
+}
+
+#header{
+
+    border-top-right-radius:25px;
+    border-top-left-radius:25px;
+    height: 170px;
+    background-color: black;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
+
+#form{
+    margin-top: 80px;
+    margin-right: 20%;
+    margin-left: 20%;
+}
+#menu{
+    height: 25px;
+    background-color: slategray;
+    color: white;
+    display: flex;
+    text-align: center;
+}
+
+a.option{
+    color: white;
+    display: block;
+    margin: auto;
+    width: 100%;
+    text-decoration: none;
+}
+a.current{
+    background-color: black;
+    color: white;
+    display: block;
+    margin: auto;
+    width: 100%;
+    text-decoration: none;
+    cursor: not-allowed;
+}
+
+
+a.option:hover{
+    opacity: 60%;
+    background: rgba(36,23,41,0.38);
+    color: black;
+
+}
+a.current:hover{
+
+    color: white;
+}
+
+#footer{
+    height: 25px;
+    background-color: black;
+    width: 1537px;
+    margin: auto;
+    border-bottom-right-radius:25px;
+    border-bottom-left-radius:25px;
+    text-align: center;
+    color: white;
+}
+
+a{
+    font-size: x-large;
+    color: cornflowerblue;
+}
+table{
+    width: 80%;
+    margin: auto;
+    border-radius: 25px;
+}
+td,th,tr{
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+td img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width:80px;
+    height:  80px;
+    border-radius: 50%;
+
+}

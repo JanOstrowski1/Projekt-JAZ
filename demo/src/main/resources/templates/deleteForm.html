@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add car</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+
+<div id="container">
+    <div id="header">
+
+        <h1 style="color: white;margin: auto"> My Quotes </h1>
+    </div>
+    <div id="menu">
+        <a class="option" href="/quotes/list">My Quotes </a>
+        <a class="option" href="/quotes/add">Add quote</a>
+        <a class="option" href="/quotes/update">Update quote</a>
+        <a class="current" href="/quotes/delete">Delete quote</a>
+    </div>
+
+    <h1>Delete quote</h1>
+    <form action="#" method="post" th:action="@{/quotes/delete}" th:object="${q}">
+        <table>
+            <tr>
+                <td><label>author</label></td>
+                <td><input type="number" th:field="${q.id}"></td>
+            </tr>
+
+            <tr>
+                <td><input type="submit" value="Delete quote"></td>
+            </tr>
+        </table>
+
+    </form>
+
+
+
+
+
+</div>
+<footer id="footer"> Jan Ostrowski © </footer>
+
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add car</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+
+<div id="container">
+    <div id="header">
+
+        <h1 style="color: white;margin: auto"> My Quotes </h1>
+    </div>
+    <div id="menu">
+        <a class="option" href="/quotes/list">My Quotes </a>
+        <a class="current" href="/quotes/add">Add quote</a>
+        <a class="option" href="/quotes/update">Update quote</a>
+        <a class="option" href="/quotes/delete">Delete quote</a>
+    </div>
+
+    <h1>Add quote</h1>
+    <form action="#" method="post" th:action="@{/quotes/add}" th:object="${q}">
+        <table>
+            <tr>
+                <td><label>author</label></td>
+                <td><input type="text" th:field="${q.author}"></td>
+            </tr>
+            <tr>
+                <td><label>text</label></td>
+                <td><input type="text" th:field="${q.text}"></td>
+            </tr>
+            <tr>
+                <td><label>image_link</label></td>
+                <td><input type="text" th:field="${q.image_link}"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Add quote"></td>
+            </tr>
+        </table>
+
+    </form>
+
+
+
+
+
+</div>
+<footer id="footer"> Jan Ostrowski © </footer>
+
+
+</body>
+</html>
