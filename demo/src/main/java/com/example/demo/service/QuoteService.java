@@ -19,19 +19,20 @@ public class QuoteService {
         this.quoteRepository = quoteRepository;
     }
 
-    public void addQuote(Quote quote){
+    public void addQuote(Quote quote) {
         quoteRepository.save(quote);
     }
-    public void updateQuote(int id,Quote newQuote){
-        if(quoteRepository.findById(id) != null){
+
+    public void updateQuote(int id, Quote newQuote) {
+        if (quoteRepository.findById(id) != null) {
             Quote quote = quoteRepository.findById(id);
-            if(Objects.equals(quote.getText(),null)){
+            if (Objects.equals(quote.getText(), null)) {
                 throw new InvalidDataException();
             }
 
             quote.setText(newQuote.getText());
 
-            if(Objects.equals(quote.getAuthor(), null)){
+            if (Objects.equals(quote.getAuthor(), null)) {
                 throw new InvalidDataException();
             }
 
@@ -39,7 +40,7 @@ public class QuoteService {
 
             quoteRepository.save(quote);
 
-            if(Objects.equals(quote.getImage_link(), null)){
+            if (Objects.equals(quote.getImage_link(), null)) {
                 throw new InvalidDataException();
             }
 
@@ -47,17 +48,17 @@ public class QuoteService {
 
             quoteRepository.save(quote);
 
-        }else {
+        } else {
             throw new QuoteNotFoundException();
         }
     }
 
-    public void deleteQuote(int id){
+    public void deleteQuote(int id) {
         quoteRepository.deleteById(id);
     }
 
-    public List<Quote> getAllQuotes(){
-       return quoteRepository.findAll();
+    public List<Quote> getAllQuotes() {
+        return quoteRepository.findAll();
     }
 
 }

@@ -9,6 +9,8 @@ body {
     margin: 40px auto auto;
     border-top-right-radius:25px;
     border-top-left-radius:25px;
+    align-content: center;
+
 }
 
 #header{

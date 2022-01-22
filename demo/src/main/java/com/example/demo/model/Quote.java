@@ -12,7 +12,26 @@ public class Quote {
     private String author;
     private String text;
     private String image_link;
+    private int user_id;
 
+    public Quote() {
+    }
+
+    public Quote(int id, String author, String text, String image_link, int user_id) {
+        this.id = id;
+        this.author = author;
+        this.text = text;
+        this.image_link = image_link;
+        this.user_id = user_id;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
 
     public int getId() {
         return id;

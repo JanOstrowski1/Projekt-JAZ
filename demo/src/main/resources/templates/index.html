@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" th:href="@{/style.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <body>
 
 <div id="container">
@@ -19,22 +20,27 @@
     </div>
 
     <h1>My list of quotes</h1>
-    <table>
 
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+        </thead>
+        <tbody>
         <tr th:each="q : ${quotes}">
             <td th:text="${q.id}"></td>
             <td th:text="${q.author}"></td>
             <td th:text="${q.text}"></td>
-            <td ><img th:src="${q.image_link}" width="80" height="80" onerror="this.onerror=null; this.src='https://pngset.com/images/away-face-no-nobody-spirited-icon-anime-icon-outdoors-nature-text-graphics-transparent-png-2614922.png'" alt=""></td>
+            <td ><img th:src="${q.image_link}" width="80" height="80" onerror="this.onerror=null;
+                this.src='https://pngset.com/images/away-face-no-nobody-spirited-icon-anime-icon-outdoors-nature-text-graphics-transparent-png-2614922.png'" alt=""></td>
 
         </tr>
-        <tr>
-            <td >2</td>
-            <td >Dan Brown</td>
-            <td >“Everything is possible. The impossible just takes longer.” </td>
-            <td ><img src="http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcSixVcGyIhxK2D04tW19JIOCZuFYPueqASq3vQBWr2vIpq6h2MR5-oQn6JHxgPT"  width="80" height="80"  alt="https://icon-library.com/images/no-photo-icon/no-photo-icon-0.jpg" ></td>
-
-        </tr>
+        </tbody>
     </table>
 
 
