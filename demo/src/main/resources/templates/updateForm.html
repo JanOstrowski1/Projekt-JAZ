@@ -19,6 +19,7 @@
         <a class="current" href="/quotes/update">Update quote</a>
         <a class="option" href="/quotes/delete">Delete quote</a>
     </div>
+    <div th:insert="logout.html"></div>
 
     <h1>Add quote</h1>
     <form action="#" method="post" th:action="@{/quotes/update}" th:object="${q}">

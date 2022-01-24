@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+<div style="
+    width: 400px;
+    height: 800px;
+    background-color: lightgray;
+    margin: 40px auto auto;
+    border-radius: 25px;
+    align-content: center;
+}
+">
+    <div id="header" style="display: flex">
+        <h1 style="margin: auto;color:  white">Login page</h1>
+    </div>
+
+    <div style="margin-left: 50px;margin-right: 50px;margin-top:30px">
+        <form name="f" th:action="@{/login}" method="post" >
+            <div class="form-group">
+                <label for="inputUsername">Username</label>
+                <input type="text" class="form-control" id="inputUsername"  placeholder="Enter username">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Log in</button>
+
+            <div th:if="${param.error}" class="alert alert-error" >Invalid username or password.</div>
+            <div th:if="${param.logout}" class="alert alert-success" >You have been logged out.</div>
+
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title>Add car</title>
     <link rel="stylesheet" th:href="@{/style.css}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
 
@@ -19,6 +20,7 @@
         <a class="option" href="/quotes/update">Update quote</a>
         <a class="option" href="/quotes/delete">Delete quote</a>
     </div>
+    <div th:insert="logout.html"></div>
 
     <h1>Add quote</h1>
     <form action="#" method="post" th:action="@{/quotes/add}" th:object="${q}">
@@ -43,11 +45,8 @@
     </form>
 
 
-
-
-
 </div>
-<footer id="footer"> Jan Ostrowski © </footer>
+<footer id="footer"> Jan Ostrowski ©</footer>
 
 
 </body>
