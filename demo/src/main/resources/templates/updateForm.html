@@ -7,21 +7,24 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-
+<div id="content" style="width: 75%;margin: auto">
 <div id="container">
     <div id="header">
 
         <h1 style="color: white;margin: auto"> My Quotes </h1>
     </div>
     <div id="menu">
+        <a class="option" href="/quotes/main">Main page </a>
+
         <a class="option" href="/quotes/list">My Quotes </a>
-        <a class="option" href="/quotes/add">Add quote</a>
-        <a class="current" href="/quotes/update">Update quote</a>
+        <a class="current" href="/quotes/add">Add quote</a>
+        <a class="option" href="/quotes/update">Update quote</a>
         <a class="option" href="/quotes/delete">Delete quote</a>
+        <a class="option" href="/quotes/list">Get quote from zen api</a>
     </div>
     <div th:insert="logout.html"></div>
 
-    <h1>Add quote</h1>
+    <h1>Update quote</h1>
     <form action="#" method="post" th:action="@{/quotes/update}" th:object="${q}">
         <table>
             <tr>
@@ -47,7 +50,7 @@
 
     </form>
 
-
+</div>
 
 
 

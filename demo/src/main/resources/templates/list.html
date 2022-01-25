@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<body>
+
+<div id="container">
+    <div id="header">
+
+        <h1 style="color: white;margin: auto"> My Quotes </h1>
+    </div>
+    <div id="menu">
+        <a class="option" href="/quotes/main">Main page </a>
+        <a class="current" href="/quotes/list">My Quotes </a>
+        <a class="option" href="/quotes/add">Manage my quotes</a>
+        <a class="option" href="/quotes/random">Get random quote from zen api</a>
+        <a class="option" href="/quotes/author">Get quotes from author</a>
+    </div>
+    <div th:insert="logout.html"></div>
+
+    <div id="content" style="width: 75%;margin: auto">
+    <h1>My list of quotes</h1>
+
+
+    <table class="table table-striped" th:if="${!quotes.isEmpty()}">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Author</th>
+            <th scope="col">Text</th>
+            <th scope="col">Image</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="q : ${quotes}">
+            <td th:text="${q.id}"></td>
+            <td th:text="${q.author}"></td>
+            <td th:text="${q.text}"></td>
+            <td ><img th:src="${q.image_link}" width="80" height="80" onerror="this.onerror=null;
+                this.src='https://www.freepnglogos.com/uploads/death-png/skull-png-images-the-symbol-death-png-only-28.png'" alt=""></td>
+
+        </tr>
+        </tbody>
+    </table>
+        <div th:if="${quotes.isEmpty()}"><br><br>
+            <h3>Your list is empty ¯\_(ツ)_/¯</h3>
+            <h5>Click <a href="/quotes/add">here</a> to add something</h5>
+        </div>
+
+</div>
+
+
+</div>
+<footer id="footer"> Jan Ostrowski © </footer>
+
+</body>
+</html>

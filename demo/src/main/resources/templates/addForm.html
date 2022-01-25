@@ -15,35 +15,85 @@
         <h1 style="color: white;margin: auto"> My Quotes </h1>
     </div>
     <div id="menu">
+        <a class="option" href="/quotes/main">Main page </a>
         <a class="option" href="/quotes/list">My Quotes </a>
-        <a class="current" href="/quotes/add">Add quote</a>
-        <a class="option" href="/quotes/update">Update quote</a>
-        <a class="option" href="/quotes/delete">Delete quote</a>
+        <a class="current" href="/quotes/add">Manage my quotes</a>
+        <a class="option" href="/quotes/random">Get random quote from zen api</a>
+        <a class="option" href="/quotes/author">Get quotes from author</a>
     </div>
     <div th:insert="logout.html"></div>
 
-    <h1>Add quote</h1>
-    <form action="#" method="post" th:action="@{/quotes/add}" th:object="${q}">
-        <table>
-            <tr>
-                <td><label>author</label></td>
-                <td><input type="text" th:field="${q.author}"></td>
-            </tr>
-            <tr>
-                <td><label>text</label></td>
-                <td><input type="text" th:field="${q.text}"></td>
-            </tr>
-            <tr>
-                <td><label>image_link</label></td>
-                <td><input type="text" th:field="${q.image_link}"></td>
-            </tr>
-            <tr>
-                <td><input type="submit" value="Add quote"></td>
-            </tr>
-        </table>
+    <div id="content" style="width: 75%;margin: auto">
+        <h1>Add quote</h1>
+        <form action="#" method="post" th:action="@{/quotes/add}" th:object="${q}">
+            <table>
+                <tr>
+                    <td><label>author</label></td>
+                    <td><input type="text" th:field="${q.author}"></td>
+                </tr>
+                <tr>
+                    <td><label>text</label></td>
+                    <td><input type="text" th:field="${q.text}"></td>
+                </tr>
+                <tr>
+                    <td><label>image_link</label></td>
+                    <td><input type="text" th:field="${q.image_link}"></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Add quote"></td>
+                </tr>
+            </table>
 
-    </form>
+        </form>
 
+        <br>
+        <h1>Update quote</h1>
+        <form action="#" method="post" th:action="@{/quotes/update}" th:object="${q}">
+            <table>
+                <tr>
+                    <td><label>Id</label></td>
+                    <td><input type="text" th:field="${q.id}"></td>
+                </tr>
+                <tr>
+                    <td><label>author</label></td>
+                    <td><input type="text" th:field="${q.author}"></td>
+                </tr>
+                <tr>
+                    <td><label>text</label></td>
+                    <td><input type="text" th:field="${q.text}"></td>
+                </tr>
+                <tr>
+                    <td><label>image_link</label></td>
+                    <td><input type="text" th:field="${q.image_link}"></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Update quote"></td>
+                </tr>
+            </table>
+
+        </form>
+        <br>
+        <h1>Delete quote</h1>
+        <form action="#" method="post" th:action="@{/quotes/delete}" th:object="${q}">
+            <table>
+                <tr>
+                    <td><label>author</label></td>
+                    <td><input type="number" th:field="${q.id}"></td>
+                </tr>
+
+                <tr>
+                    <td><input type="submit" value="Delete quote"></td>
+                </tr>
+            </table>
+
+        </form>
+        <form action="#" method="post" th:action="@{/quotes/deleteAll}" th:object="${q}">
+                    <input type="submit" value="Delete all quotes">
+        </form>
+
+
+
+    </div>
 
 </div>
 <footer id="footer"> Jan Ostrowski ©</footer>

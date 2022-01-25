@@ -25,6 +25,13 @@ public class Quote {
         this.user_id = user_id;
     }
 
+    public Quote(String author, String text, String image_link) {
+        this.author = author;
+        this.text = text;
+        this.image_link = image_link;
+        this.user_id = user_id;
+    }
+
     public int getUser_id() {
         return user_id;
     }

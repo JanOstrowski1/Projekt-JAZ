@@ -10,9 +10,4 @@ public class LoginController {
     public String login(){
         return "login";
     }
-//    @PostMapping("/login")
-//    public String start(){
-//
-//        return "redirect:/quotes/list";
-//    }
 }

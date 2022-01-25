@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Add car</title>
     <link rel="stylesheet" th:href="@{/style.css}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
 <body>
 
 <div id="container">
@@ -13,43 +15,24 @@
         <h1 style="color: white;margin: auto"> My Quotes </h1>
     </div>
     <div id="menu">
-        <a class="current" href="/quotes/list">My Quotes </a>
-        <a class="option" href="/quotes/add">Add quote</a>
-        <a class="option" href="/quotes/update">Update quote</a>
-        <a class="option" href="/quotes/delete">Delete quote</a>
+        <a class="current" href="/quotes/main">Main page </a>
+        <a class="option" href="/quotes/list">My Quotes </a>
+        <a class="option" href="/quotes/add">Manage my quotes</a>
+        <a class="option" href="/quotes/random">Get random quote from zen api</a>
+        <a class="option" href="/quotes/author">Get quotes from author</a>
     </div>
     <div th:insert="logout.html"></div>
 
-
-    <h1>My list of quotes</h1>
-
-
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="q : ${quotes}">
-            <td th:text="${q.id}"></td>
-            <td th:text="${q.author}"></td>
-            <td th:text="${q.text}"></td>
-            <td ><img th:src="${q.image_link}" width="80" height="80" onerror="this.onerror=null;
-                this.src='https://pngset.com/images/away-face-no-nobody-spirited-icon-anime-icon-outdoors-nature-text-graphics-transparent-png-2614922.png'" alt=""></td>
-
-        </tr>
-        </tbody>
-    </table>
+    <div id="content" style="width: 75%;margin: auto">
+        <h1>Welcome to MyQuotes </h1>
+        <h5><i>the first page that lets you store all your favourite quotes</i></h5>
 
 
-
+    </div>
 
 </div>
-<footer id="footer"> Jan Ostrowski © </footer>
+<footer id="footer"> Jan Ostrowski ©</footer>
+
 
 </body>
 </html>

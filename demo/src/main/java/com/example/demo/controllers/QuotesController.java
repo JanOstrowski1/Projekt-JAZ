@@ -2,23 +2,14 @@ package com.example.demo.controllers;
 
 import com.example.demo.model.Quote;
 import com.example.demo.service.QuoteService;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.client.RestTemplate;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.List;
 
 @Controller
@@ -33,11 +24,16 @@ public class QuotesController {
 
     QuoteService quoteService;
 
+    @GetMapping("main")
+    public String mainPage(){
+        return "index";
+    }
+
     @GetMapping("/list")
     public String getListOfQuotes(Model model) {
         List<Quote> quotes = quoteService.getAllQuotes();
         model.addAttribute("quotes",quotes);
-        return "index";
+        return "list";
     }
 
     @GetMapping("/add")
@@ -63,6 +59,13 @@ public class QuotesController {
         quoteService.deleteQuote(quote.getId());
         return "redirect:/quotes/list";
     }
+    @PostMapping("/deleteAll")
+    public String submitDeleteAllQuotesForm(){
+       List<Quote> myList= quoteService.getAllQuotes();
+       myList.forEach(quote -> quoteService.deleteQuote(quote.getId()));
+        return "redirect:/quotes/list";
+    }
+
 
     @GetMapping("/update")
     public String displayUpdateQuoteForm(Model model){

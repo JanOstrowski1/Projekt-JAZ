@@ -61,4 +61,8 @@ public class QuoteService {
         return quoteRepository.findAll();
     }
 
+    public void fillUpTheQuoteList(){
+        quoteRepository.save(new Quote("author","text","image_link"));
+    }
+
 }

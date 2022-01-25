@@ -10,9 +10,9 @@ body {
     border-top-right-radius:25px;
     border-top-left-radius:25px;
     align-content: center;
+    display: flex;
 
 }
-
 
 #header{
 
@@ -65,6 +65,12 @@ a.option:hover{
 a.current:hover{
 
     color: white;
+}
+
+#content{
+   margin:auto;
+    width: 1100px;
+    background-color: cornsilk;
 }
 
 #footer{
