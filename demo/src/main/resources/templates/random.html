@@ -15,18 +15,18 @@
         <h1 style="color: white;margin: auto"> My Quotes </h1>
     </div>
     <div id="menu">
-        <a class="current" href="/quotes/main">Main page </a>
+        <a class="option" href="/quotes/main">Main page </a>
         <a class="option" href="/quotes/list">My Quotes </a>
         <a class="option" href="/quotes/add">Manage my quotes</a>
-        <a class="option" href="/quotes/random">Get random quote </a>
+        <a class="current" href="/quotes/random">Get random quote </a>
         <a class="option" href="/quotes/author">Get quotes from author</a>
     </div>
     <div th:insert="logout.html"></div>
 
     <div id="content" style="width: 75%;margin: auto">
         <br><br>
-        <h1>Welcome to MyQuotes </h1>
-        <h5><i>the first page that lets you store all your favourite quotes</i></h5>
+        <h1>Your random quote:</h1>
+        <p th:text="${#request.getParameter('q.h')}" th:unless="${#request.getParameter('q') == null}">text</p>
 
 
     </div>
