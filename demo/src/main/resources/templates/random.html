@@ -26,9 +26,17 @@
     <div id="content" style="width: 75%;margin: auto">
         <br><br>
         <h1>Your random quote:</h1>
-        <p th:text="${#request.getParameter('q.h')}" th:unless="${#request.getParameter('q') == null}">text</p>
-
-
+        <br>
+        <i> <h3 th:inline="text" >
+            [[${q.getQ()}]]
+            <p> ~<small th:text="${q.getA()}">Subtitle</small></p>
+        </h3></i>
+        <br>
+        <form th:action="@{/quotes/random}" th:object="${q}" method="post">
+            <input type="hidden" th:field="*{q}"/>
+            <input type="hidden" th:field="*{a}"/>
+            <button type="submit" class="btn btn-secondary">Add quote to your list</button>
+        </form>
     </div>
 
 </div>

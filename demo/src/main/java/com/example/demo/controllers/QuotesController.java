@@ -1,7 +1,9 @@
 package com.example.demo.controllers;
 
+import com.example.demo.dto.QuoteDto;
 import com.example.demo.model.Quote;
 import com.example.demo.service.QuoteService;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -25,7 +28,10 @@ public class QuotesController {
     QuoteService quoteService;
 
     @GetMapping("main")
-    public String mainPage(){
+    public String mainPage(Model model) throws IOException, ParseException {
+        ZenApiController zenApiController = new ZenApiController();
+       QuoteDto quoteDto= zenApiController.QuoteOfTheDay();
+       model.addAttribute("q",quoteDto);
         return "index";
     }
 
@@ -48,11 +54,11 @@ public class QuotesController {
 
         return "redirect:/quotes/list";
     }
-    @GetMapping("/delete")
-    public String displayDeleteQuoteForm(Model model){
-        model.addAttribute("q",new Quote());
-        return "deleteForm";
-    }
+//    @GetMapping("/delete")
+//    public String displayDeleteQuoteForm(Model model){
+//        model.addAttribute("q",new Quote());
+//        return "deleteForm";
+//    }
 
     @PostMapping("/delete")
     public String submitDeleteQuoteForm(@ModelAttribute Quote quote){
@@ -67,15 +73,21 @@ public class QuotesController {
     }
 
 
-    @GetMapping("/update")
-    public String displayUpdateQuoteForm(Model model){
-        model.addAttribute("q",new Quote());
-        return "updateForm";
-    }
+//    @GetMapping("/update")
+//    public String displayUpdateQuoteForm(Model model){
+//        model.addAttribute("q",new Quote());
+//        return "updateForm";
+//    }
 
     @PostMapping("/update")
     public String submitUpdateQuoteForm(@ModelAttribute Quote quote){
         quoteService.updateQuote(quote.getId(),quote);
+        return "redirect:/quotes/list";
+    }
+    @PostMapping("/random")
+    public String addRandomQuoteToYourList(@ModelAttribute QuoteDto quoteDto) {
+        Quote quote= new Quote(quoteDto.getA(), quoteDto.getQ(),quoteService.findImageUrl(quoteDto.getA()));
+        quoteService.addQuote(quote);
         return "redirect:/quotes/list";
     }
 }

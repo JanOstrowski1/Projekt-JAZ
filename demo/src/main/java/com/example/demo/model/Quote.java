@@ -29,7 +29,6 @@ public class Quote {
         this.author = author;
         this.text = text;
         this.image_link = image_link;
-        this.user_id = user_id;
     }
 
     public int getUser_id() {

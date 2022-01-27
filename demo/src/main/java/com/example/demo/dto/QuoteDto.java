@@ -6,12 +6,11 @@ import lombok.Data;
 public class QuoteDto {
    private String q ;//= quote text
    private String a ;//= author name
-   private String i ;//= author image (key required)
-   private String c ;//= character count
    private String h ;//= pre-formatted HTML quote
 
-   public QuoteDto( String h) {
-
+   public QuoteDto(String q, String a, String h) {
+      this.q = q;
+      this.a = a;
       this.h = h;
    }
 }

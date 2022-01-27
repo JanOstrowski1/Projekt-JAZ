@@ -25,11 +25,26 @@
 
     <div id="content" style="width: 75%;margin: auto">
         <br><br>
-        <h1>Welcome to MyQuotes </h1>
-        <h5><i>the first page that lets you store all your favourite quotes</i></h5>
+       <div style="margin: auto">
+           <h1>Welcome to MyQuotes </h1>
+           <h5><i>the first page that lets you store all your favourite quotes</i></h5>
+       </div>
+
+        <br>
+        <img src="http://i.stack.imgur.com/SBv4T.gif" alt="this slowpoke moves"  width="250" />
+        <br><br>
+        <h5>This website was made with data from <a href="https://zenquotes.io" target="_blank">zenquotes.io</a>.</h5>
+        <br><br>
+
+        <div >
+            <h4 th:inline="text" >
+                Quote of the day : <i>[[${q.getQ()}]] ~ [[${q.getA()}]]</i>
+            </h4>
+        </div>
 
 
     </div>
+
 
 </div>
 <footer id="footer"> Jan Ostrowski ©</footer>

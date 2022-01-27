@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add car</title>
+    <title>Manage my quotes</title>
     <link rel="stylesheet" th:href="@{/style.css}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -23,77 +23,75 @@
     </div>
     <div th:insert="logout.html"></div>
 
-   <div id="content" style="width: 75%;margin: auto">-->
-        <h1>Add quote</h1>
-        <form action="#" method="post" th:action="@{/quotes/add}" th:object="${q}">
-            <table>
-                <tr>
-                    <td><label>author</label></td>
-                    <td><input type="text" th:field="${q.author}"></td>
-                </tr>
-                <tr>
-                    <td><label>text</label></td>
-                    <td><input type="text" th:field="${q.text}"></td>
-                </tr>
-                <tr>
-                    <td><label>image_link</label></td>
-                    <td><input type="text" th:field="${q.image_link}"></td>
-                </tr>
-                <tr>
-                    <td><input type="submit" value="Add quote"></td>
-                </tr>
-            </table>
+    <div id="content" style="width: 75%;margin: auto;display: flex;flex-wrap: wrap;">
 
-        </form>
+        <div style="margin: auto">
+            <br><br>
+            <h1>Add quote</h1>
+            <form action="#" method="post" th:action="@{/quotes/add}" th:object="${q}">
+                <div class="form-group">
+                    <label for="text1">Author</label>
+                    <input type="text" class="form-control" id="text1" th:field="${q.author}">
+                </div>
+                <div class="form-group">
+                    <label for="text2">quote</label>
+                    <input type="text" class="form-control" id="text2" th:field="${q.text}">
+                </div>
+                <div class="form-group">
+                    <label for="text3">image link</label>
+                    <input type="text" class="form-control" id="text3" th:field="${q.image_link}">
+                </div>
+                <button type="submit" class="btn btn-primary">Add quote</button>
+            </form>
+        </div>
 
-        <br>
-        <h1>Update quote</h1>
-        <form action="#" method="post" th:action="@{/quotes/update}" th:object="${q}">
-            <table>
-                <tr>
-                    <td><label>Id</label></td>
-                    <td><input type="text" th:field="${q.id}"></td>
-                </tr>
-                <tr>
-                    <td><label>author</label></td>
-                    <td><input type="text" th:field="${q.author}"></td>
-                </tr>
-                <tr>
-                    <td><label>text</label></td>
-                    <td><input type="text" th:field="${q.text}"></td>
-                </tr>
-                <tr>
-                    <td><label>image_link</label></td>
-                    <td><input type="text" th:field="${q.image_link}"></td>
-                </tr>
-                <tr>
-                    <td><input type="submit" value="Update quote"></td>
-                </tr>
-            </table>
+        <div style="margin: auto">
+            <br><br><br><br>
+            <h1>Update quote</h1>
+            <form action="#" method="post" th:action="@{/quotes/update}" th:object="${q}">
+                <div class="form-group">
+                    <label for="text0">Id</label>
+                    <input type="number" class="form-control" id="text0" th:field="${q.id}">
+                </div>
+                <div class="form-group">
+                    <label for="update1">Author</label>
+                    <input type="text" class="form-control" id="update1" th:field="${q.author}">
+                </div>
+                <div class="form-group">
+                    <label for="update2">quote</label>
+                    <input type="text" class="form-control" id="update2" th:field="${q.text}">
+                </div>
+                <div class="form-group">
+                    <label for="update3">image link</label>
+                    <input type="text" class="form-control" id="update3" th:field="${q.image_link}">
+                </div>
+                <button type="submit" class="btn btn-success">Update quote</button>
 
-        </form>
-        <br>
-        <h1>Delete quote</h1>
-        <form action="#" method="post" th:action="@{/quotes/delete}" th:object="${q}">
-            <table>
-                <tr>
-                    <td><label>author</label></td>
-                    <td><input type="number" th:field="${q.id}"></td>
-                </tr>
-
-                <tr>
-                    <td><input type="submit" value="Delete quote"></td>
-                </tr>
-            </table>
-
-        </form>
-        <form action="#" method="post" th:action="@{/quotes/deleteAll}" th:object="${q}">
-                    <input type="submit" value="Delete all quotes">
-        </form>
+            </form>
+        </div>
 
 
 
-    </div>-->
+
+        <div style="margin: auto">
+            <br><br>
+            <h1>Delete quote</h1>
+            <form action="#" method="post" th:action="@{/quotes/delete}" th:object="${q}">
+                <div class="form-group">
+                    <label for="delete1">Id</label>
+                    <input type="number" class="form-control" id="delete1" th:field="${q.id}">
+                </div>
+                <button type="submit" class="btn btn-warning">Delete quote</button>
+            </form>
+
+            <br>
+            <h1>Delete all quotes</h1>
+            <form action="#" method="post" th:action="@{/quotes/deleteAll}">
+                <button type="submit" class="btn btn-danger">Delete all quotes</button>
+            </form>
+        </div>
+
+    </div>
 
 </div>
 <footer id="footer"> Jan Ostrowski ©</footer>

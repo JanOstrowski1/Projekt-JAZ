@@ -4,7 +4,7 @@ body {
 
 #container{
     width: 1537px;
-    height: 950px;
+    min-height: 950px;
     background-color: lightgray;
     margin: 40px auto auto;
     border-top-right-radius:25px;
