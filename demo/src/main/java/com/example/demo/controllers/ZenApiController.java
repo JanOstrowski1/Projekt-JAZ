@@ -11,6 +11,7 @@ import org.apache.commons.io.IOUtils;
 
 import org.json.JSONException;
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,9 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 @Controller
@@ -50,6 +53,34 @@ public class ZenApiController {
                 new ObjectMapper().readValue(jsonString, HashMap.class);
 
         return new QuoteDto(map.get("q"),map.get("a"), map.get("h"));
+    }
+    @GetMapping("/quotes/author")
+    public String fetchQuoteListFromZenApi(Model model) throws IOException, ParseException{
+        final String sURL= "https://zenquotes.io/api/quotes/[your_key]";
+        JSONArray jsonArray = (JSONArray) new JSONParser().parse(String.valueOf(IOUtils.toString(new URL(sURL))));
+        String jsonStr = jsonArray.toJSONString();
+        Gson gson = new Gson();
+        QuoteDto quoteDtoList[] = gson.fromJson(jsonStr, QuoteDto[].class);
+        Arrays.stream(quoteDtoList).forEach(quoteDto -> quoteDto.setI(findImageUrl(quoteDto.getA())));
+
+        model.addAttribute("list",quoteDtoList);
+        return "author";
+    }
+
+//    public static void main(String[] args) throws IOException, ParseException {
+//        final String sURL= "https://zenquotes.io/api/quotes/[your_key]";
+//        JSONArray jsonArray = (JSONArray) new JSONParser().parse(String.valueOf(IOUtils.toString(new URL(sURL))));
+//        String jsonStr = jsonArray.toJSONString();
+//        Gson gson = new Gson();
+//        QuoteDto quoteDtoList[] = gson.fromJson(jsonStr, QuoteDto[].class);
+//        for (QuoteDto quoteDto:quoteDtoList) {
+//            System.out.println("quote: "+quoteDto.getQ()+ " author: "+ quoteDto.getA() );
+//        }
+//
+//    }
+    public String findImageUrl(String author){
+        String name= author.toLowerCase(Locale.ROOT).replace(' ','-');
+        return "https://zenquotes.io/img/"+name +".jpg";
     }
 
 }

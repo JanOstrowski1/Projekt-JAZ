@@ -2,9 +2,59 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+    <title>Author</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <body>
+
+<div id="container">
+    <div id="header">
+
+        <h1 style="color: white;margin: auto"> My Quotes </h1>
+    </div>
+    <div id="menu">
+        <a class="option" href="/quotes/main">Main page </a>
+        <a class="option" href="/quotes/list">My Quotes </a>
+        <a class="option" href="/quotes/add">Manage my quotes</a>
+        <a class="option" href="/quotes/random">Get random quote </a>
+        <a class="current" href="/quotes/author">Explore quotes</a>
+    </div>
+    <div th:insert="logout.html"></div>
+
+    <div id="content" style="width: 75%;margin: auto">
+        <h1>My list of quotes</h1>
+
+
+        <table class="table table-striped" >
+            <thead>
+            <tr>
+                <th scope="col">Author</th>
+                <th scope="col">Text</th>
+                <th scope="col">Image</th>
+               <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="quoteDto:${list}" >
+                <td th:text="${quoteDto.a}"></td>
+                <td th:text="${quoteDto.q}"></td>
+                <td ><img th:src="${quoteDto.i}" width="80" height="80" onerror="this.onerror=null;
+                this.src='https://www.freepnglogos.com/uploads/death-png/skull-png-images-the-symbol-death-png-only-28.png'" alt=""></td>
+                <td ><form action="#" th:action="@{/quotes/random}" th:object="${quoteDto}" method="post">
+                    <input type="hidden" th:value="${quoteDto.a}" th:attr="name='a'"/>
+                    <input type="hidden" th:value="${quoteDto.q}" th:attr="name='q'"/>
+                    <input type="hidden" th:value="${quoteDto.i}" th:attr="name='i'"/>
+                    <button type="submit" class="btn btn-secondary">Add to your list</button>
+                </form></td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+    </div>
+
+
+</div>
+<footer id="footer"> Jan Ostrowski © </footer>
 
 </body>
 </html>

@@ -4,7 +4,23 @@
     <meta charset="UTF-8">
     <title>My quotes</title>
     <link rel="stylesheet" th:href="@{/style.css}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script>
+
+        function copy_to_clipboard(id) {
+            var str_id = id.toString();
+            let element = document.getElementById(str_id); //select the element
+            // let elementText = element.textContent; //get the text content from the element
+            element.select();
+            document.execCommand('copy');
+
+            alert("Copied the text: " + elementText);
+        }
+
+
+
+    </script>
 <body>
 
 <div id="container">
@@ -17,44 +33,54 @@
         <a class="current" href="/quotes/list">My Quotes </a>
         <a class="option" href="/quotes/add">Manage my quotes</a>
         <a class="option" href="/quotes/random">Get random quote </a>
-        <a class="option" href="/quotes/author">Get quotes from author</a>
+        <a class="option" href="/quotes/author">Explore quotes</a>
     </div>
     <div th:insert="logout.html"></div>
 
     <div id="content" style="width: 75%;margin: auto">
-    <h1>My list of quotes</h1>
+        <h1>My list of quotes</h1>
 
 
-    <table class="table table-striped" th:if="${!quotes.isEmpty()}">
-        <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Author</th>
-            <th scope="col">Text</th>
-            <th scope="col">Image</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="q : ${quotes}">
-            <td th:text="${q.id}"></td>
-            <td th:text="${q.author}"></td>
-            <td th:text="${q.text}"></td>
-            <td ><img th:src="${q.image_link}" width="80" height="80" onerror="this.onerror=null;
-                this.src='https://www.freepnglogos.com/uploads/death-png/skull-png-images-the-symbol-death-png-only-28.png'" alt=""></td>
-
-        </tr>
-        </tbody>
-    </table>
+        <table class="table table-striped" th:if="${!quotes.isEmpty()}">
+            <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Author</th>
+                <th scope="col">Text</th>
+                <th scope="col">Image</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="q : ${quotes}">
+                <td th:text="${q.id}"></td>
+                <td th:text="${q.author}"></td>
+                <td th:text="${q.text}" th:id="${q.id}"></td>
+                <td><img th:src="${q.image_link}" width="80" height="80" onerror="this.onerror=null;
+                this.src='https://www.freepnglogos.com/uploads/death-png/skull-png-images-the-symbol-death-png-only-28.png'"
+                         alt=""></td>
+                <td>
+<!--                    <button type="button" class="btn btn-primary" th:attr="onclick=${'copy_to_clipboard('+q.id+')'}">Copy to-->
+<!--                        clipboard-->
+<!--                    </button>-->
+                    <form action="#" th:action="@{/quotes/delete}" th:object="${q}" method="post" id="myForm">
+                        <input type="hidden" th:value="${q.id}" th:attr="name='id'"/>
+                        <button type="submit" class="btn btn-danger">Delete quote</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
         <div th:if="${quotes.isEmpty()}"><br><br>
             <h3>Your list is empty ¯\_(ツ)_/¯</h3>
-            <h5>Click <a href="/quotes/add">here</a> to add something</h5>
+            <h5>Click <a href="/quotes/author">here</a> to add something</h5>
         </div>
-<br>
-</div>
+        <br>
+    </div>
 
 
 </div>
-<footer id="footer"> Jan Ostrowski © </footer>
+<footer id="footer"> Jan Ostrowski ©</footer>
 
 </body>
 </html>

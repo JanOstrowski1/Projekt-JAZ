@@ -21,6 +21,8 @@ public class QuoteService {
         fillUpTheQuoteList();
     }
 
+
+
     public void addQuote(Quote quote) {
         quoteRepository.save(quote);
     }
